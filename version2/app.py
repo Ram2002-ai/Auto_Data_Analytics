@@ -22,7 +22,7 @@ pio.templates.default = "plotly_white"
 # ---------------------------------------
 
 st.set_page_config(
-    page_title="AI Data Analyst Pro",
+    page_title="AI Data Analysis & Data Science Web App",
     layout="wide",
     page_icon="📊",
     initial_sidebar_state="expanded"
@@ -426,7 +426,7 @@ st.markdown("""
 
 st.markdown("""
 <div class="header-container">
-    <div class="header-title">📊 AI Data Analyst Pro</div>
+    <div class="header-title">📊 AI Data Analysis & Data Science</div>
     <div class="header-subtitle">Intelligent Data Analysis & Visualization Platform</div>
 </div>
 """, unsafe_allow_html=True)
