@@ -1,363 +1,360 @@
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           AI DATA ANALYST APP                                │
-│                          COMPLETE WORKFLOW                                    │
-└─────────────────────────────────────────────────────────────────────────────┘
+#  AI Data Analyst App
 
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                            1. UPLOAD DATASET                                 │
-│                                                                            │
-│   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                │
-│   │ CSV Upload   │───▶│ Data Preview │───▶│ Auto Detect  │                │
-│   │ Excel Upload │    │ Row Count    │    │ Column Types │                │
-│   └──────────────┘    └──────────────┘    └──────────────┘                │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          2. PREPROCESSING (5 TABS)                          │
-│                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 1: OVERVIEW                                                      │  │
-│  │ • Original rows/columns                                              │  │
-│  │ • Missing data percentage                                            │  │
-│  │ • Data quality check table                                           │  │
-│  │ • Missing values heatmap                                             │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 2: CLEAN DATA                                                    │  │
-│  │ • Remove duplicates [Button]                                        │  │
-│  │ • Handle missing values:                                            │  │
-│  │   - Mean/Median/Mode imputation                                     │  │
-│  │   - KNN Imputer                                                     │  │
-│  │   - Drop rows                                                       │  │
-│  │ • Outlier detection with IQR                                        │  │
-│  │   [Remove outliers button]                                          │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 3: TRANSFORM                                                    │  │
-│  │ • Create new column (square, log, etc.)                            │  │
-│  │ • Rename column                                                     │  │
-│  │ • Drop column                                                       │  │
-│  │ • Change data type                                                  │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 4: SCALE & ENCODE                                               │  │
-│  │ • Feature scaling:                                                  │  │
-│  │   - StandardScaler                                                  │  │
-│  │   - MinMaxScaler                                                    │  │
-│  │ • Categorical encoding:                                             │  │
-│  │   - Label Encoding                                                  │  │
-│  │   - One-Hot Encoding                                                │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 5: FEATURE ENGINEERING                                          │  │
-│  │ • Feature interactions (multiply, add, etc.)                       │  │
-│  │ • Feature binning                                                   │  │
-│  │ [Download Processed Data]                                           │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                           3. EXPLORATORY DATA ANALYSIS (EDA)                │
-│                              (5 TABS)                                        │
-│                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 1: DATA OVERVIEW                                                 │  │
-│  │ • Key metrics cards                                                  │  │
-│  │ • Data preview                                                       │  │
-│  │ • Column information table                                           │  │
-│  │ • Sample values                                                      │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 2: UNIVARIATE ANALYSIS                                          │  │
-│  │ • Numeric: Histogram + Box Plot + Statistics                       │  │
-│  │ • Categorical: Bar Chart + Pie Chart + Value Counts                │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 3: BIVARIATE ANALYSIS                                           │  │
-│  │ • Numeric vs Numeric: Scatter + Correlation                        │  │
-│  │ • Numeric vs Categorical: Box + Violin Plots                       │  │
-│  │ • Categorical vs Categorical: Heatmap + Grouped Bars               │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 4: MULTIVARIATE ANALYSIS                                        │  │
-│  │ • Correlation matrix heatmap                                        │  │
-│  │ • Pair plot (scatter matrix)                                        │  │
-│  │ • 3D scatter plot                                                   │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 5: SUMMARY REPORT                                               │  │
-│  │ • Automated insights                                                │  │
-│  │ • Key findings list                                                 │  │
-│  │ • Dataset summary                                                   │  │
-│  │ • [Download EDA Report]                                             │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         4. VISUALIZATION (6 TYPES)                          │
-│                                                                            │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
-│  │ DISTRIBUTION │ │ CATEGORICAL  │ │ RELATIONSHIP │ │ TIME SERIES  │   │
-│  │ • Histogram  │  │ • Bar Chart  │ │ • Scatter    │ │ • Line Plot  │   │
-│  │ • Box Plot   │  │ • Pie Chart  │ │ • Line Plot  │ │ • Resampling │   │
-│  │ • Violin Plot│  │ • Sunburst   │ │ • Heatmap    │ │              │   │
-│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘   │
-│                                                                            │
-│  ┌──────────────┐  ┌──────────────┐                                       │
-│  │ STATISTICAL  │ │  ADVANCED    │                                       │
-│  │ • QQ Plot    │  │ • 3D Scatter │                                       │
-│  │ • Density    │  │ • Parallel   │                                       │
-│  │   Heatmap    │  │   Coordinates│                                       │
-│  └──────────────┘  └──────────────┘                                       │
-│                                                                            │
-│  [Download Data as CSV]                                                    │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                      5. MACHINE LEARNING (5 TABS)                           │
-│                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 1: CONFIGURATION                                                 │  │
-│  │ • Select target column                                               │  │
-│  │ • Auto-detect problem type (Classification/Regression)              │  │
-│  │ • Select features                                                    │  │
-│  │ • Set test size, CV folds                                            │  │
-│  │ • Choose model from dropdown                                         │  │
-│  │ • Hyperparameter tuning option                                       │  │
-│  │ • [Save Configuration]                                               │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 2: MODEL TRAINING                                               │  │
-│  │ • [Train Model] button                                              │  │
-│  │ • Progress bar during training                                      │  │
-│  │ • Results displayed:                                                │  │
-│  │   - Accuracy/Precision/Recall/F1 (Classification)                  │  │
-│  │   - R²/RMSE/MAE (Regression)                                        │  │
-│  │   - Cross-validation scores                                         │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 3: MODEL EVALUATION                                             │  │
-│  │ • Confusion matrix (Classification)                                 │  │
-│  │ • Classification report                                             │  │
-│  │ • ROC curve (if binary)                                             │  │
-│  │ • Actual vs Predicted (Regression)                                  │  │
-│  │ • Residual analysis                                                 │  │
-│  │ • Feature importance plot                                           │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 4: LIVE PREDICTIONS                                             │  │
-│  │                                                                     │  │
-│  │  ┌─────────────────────────────────────────────────────────────┐   │  │
-│  │  │ SINGLE PREDICTION                                            │   │  │
-│  │  │ • Input fields for each feature:                             │   │  │
-│  │  │   - Sliders for numeric columns                              │   │  │
-│  │  │   - Dropdowns for categorical columns                        │   │  │
-│  │  │ • [Make Prediction] button                                   │   │  │
-│  │  │ • RESULT: "Prediction: 45,678" (big display)                 │   │  │
-│  │  │ • Probability chart (if classification)                      │   │  │
-│  │  └─────────────────────────────────────────────────────────────┘   │  │
-│  │                                                                     │  │
-│  │  ┌─────────────────────────────────────────────────────────────┐   │  │
-│  │  │ BATCH PREDICTION                                             │   │  │
-│  │  │ • Upload CSV file                                            │   │  │
-│  │  │ • Preview uploaded data                                      │   │  │
-│  │  │ • [Predict Batch] button                                     │   │  │
-│  │  │ • Results table with predictions                             │   │  │
-│  │  │ • [Download Predictions]                                     │   │  │
-│  │  └─────────────────────────────────────────────────────────────┘   │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 5: MODEL MANAGEMENT                                            │  │
-│  │ • Current model info                                               │  │
-│  │ • [Save Model] button                                              │  │
-│  │ • [Download Model] button                                          │  │
-│  │ • Upload saved model for reuse                                     │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          6. BUSINESS INSIGHTS                               │
-│                              (5 TABS)                                        │
-│                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 1: OVERVIEW                                                     │  │
-│  │ • Key metrics cards                                                  │  │
-│  │ • Column composition pie chart                                       │  │
-│  │ • Data quality score gauge                                           │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 2: TRENDS & PATTERNS                                            │  │
-│  │ • Top correlations with emojis                                      │  │
-│  │ • Strongest relationships highlighted                               │  │
-│  │ • Skewed features warning                                           │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 3: KEY DRIVERS                                                  │  │
-│  │ • High variance features                                            │  │
-│  │ • Feature importance visualization                                  │  │
-│  │ • Most influential metrics identified                               │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 4: ANOMALIES                                                    │  │
-│  │ • Outlier detection per column                                      │  │
-│  │ • Warning for columns with >5% outliers                             │  │
-│  │ • Box plot visualization                                            │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 5: RECOMMENDATIONS                                              │  │
-│  │ • Strategic business recommendations                                │  │
-│  │ • Actionable insights                                               │  │
-│  │ • [Download Insights Report]                                        │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          7. CHATBOT INTERFACE                               │
-│                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │                    CHAT WINDOW                                        │  │
-│  ├─────────────────────────────────────────────────────────────────────┤  │
-│  │                                                                     │  │
-│  │  🤖 Bot: Hi! Ask me anything about your dataset                    │  │
-│  │                                                                     │  │
-│  │  👤 User: How many rows and columns?                               │  │
-│  │                                                                     │  │
-│  │  🤖 Bot: The dataset has 10,000 rows and 15 columns                │  │
-│  │                                                                     │  │
-│  │  👤 User: Show me missing values                                   │  │
-│  │                                                                     │  │
-│  │  🤖 Bot: Missing Values:                                            │  │
-│  │         • Age: 45 (0.5%)                                           │  │
-│  │         • Income: 120 (1.2%)                                       │  │
-│  │                                                                     │  │
-│  │  👤 User: Show correlation matrix                                  │  │
-│  │                                                                     │  │
-│  │  🤖 Bot: [Displays correlation heatmap]                            │  │
-│  │                                                                     │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ [Type your question here...]                           [Send] 📤    │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ QUICK QUESTIONS:                                                     │  │
-│  │ [📊 Shape] [🔍 Missing] [📈 Stats] [🔄 Correlation]                  │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       8. DATA QUALITY REPORT                               │
-│                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │                    QUALITY GAUGE                                      │  │
-│  │                    ╭───────╮                                         │  │
-│  │                    │ 87%   │                                         │  │
-│  │                    ╰───────╯                                         │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                                                            │
-│  METRICS:                           QUALITY TABLE:                        │
-│  ┌────────────┬───────┐            ┌─────────┬──────┬─────────┐          │
-│  │Completeness│ 95%   │            │ Column  │Missing│Outliers│          │
-│  │Uniqueness  │ 98%   │            │ Age     │ 0     │ 12     │          │
-│  │Memory      │ 2.5MB │            │ Income  │ 45    │ 8      │          │
-│  └────────────┴───────┘            └─────────┴──────┴─────────┘          │
-│                                                                            │
-│  ANOMALY DETECTION:                       RECOMMENDATIONS:                │
-│  • 23 outliers detected (0.2%)             • Handle missing values        │
-│  • No unusual patterns found                • Remove 5 duplicates         │
-│                                             • Check income outliers       │
-│                                                                            │
-│  [Download Quality Report]                                                 │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                     9. STATISTICAL ANALYSIS (5 TABS)                       │
-│                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 1: DESCRIPTIVE STATS                                             │  │
-│  │ • Summary statistics table                                           │  │
-│  │ • Quantile statistics                                                │  │
-│  │ • Confidence intervals                                               │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 2: CORRELATION TESTS                                            │  │
-│  │ • Pearson correlation matrix                                        │  │
-│  │ • Spearman correlation                                              │  │
-│  │ • Detailed correlation test with p-values                           │  │
-│  │ • Covariance matrix                                                 │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 3: HYPOTHESIS TESTING                                           │  │
-│  │ • One-Sample t-test                                                 │  │
-│  │ • Independent t-test                                                │  │
-│  │ • Paired t-test                                                     │  │
-│  │ • One-Way ANOVA + Tukey HSD                                         │  │
-│  │ • Chi-Square Test + Cramer's V                                      │  │
-│  │ • Mann-Whitney U Test                                               │  │
-│  │ • Wilcoxon Signed-Rank Test                                         │  │
-│  │ • Kruskal-Wallis Test                                               │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 4: DISTRIBUTION TESTS                                           │  │
-│  │ • Shapiro-Wilk normality test                                       │  │
-│  │ • Kolmogorov-Smirnov test                                           │  │
-│  │ • Anderson-Darling test                                             │  │
-│  │ • Skewness & Kurtosis tests                                         │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-│                                    │                                       │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ TAB 5: REGRESSION ANALYSIS                                          │  │
-│  │ • Linear regression with multiple features                          │  │
-│  │ • R-squared, RMSE                                                   │  │
-│  │ • Coefficients table                                                │  │
-│  │ • Residual plot                                                     │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────┘
+A complete end-to-end **AI-powered Data Analysis Platform** that takes raw data and transforms it into **insights, visualizations, and predictions** — all in one place.
 
+---
 
+## 🚀 Complete Workflow
 
+```
+RAW DATA → CLEANING → TRANSFORMATION → EDA → VISUALIZATION → ML → INSIGHTS → CHATBOT
+```
 
+---
 
+# 📂 1. Upload Dataset
 
-📊 DATA FLOW SUMMARY
+* Upload **CSV / Excel files**
+* Preview dataset
+* Auto-detect:
 
-┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐
-│   RAW      │────▶│  CLEANED   │────▶│  SCALED/   │────▶│   MODEL    │
-│   DATA     │     │   DATA     │     │  ENCODED   │     │  TRAINED   │
-└────────────┘     └────────────┘     └────────────┘     └────────────┘
-      │                   │                   │                   │
-      ▼                   ▼                   ▼                   ▼
-┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐
-│  OVERVIEW  │     │    EDA     │     │   INSIGHTS │     │  LIVE      │
-│  STATS     │     │  CHARTS    │     │            │     │PREDICTIONS │
-└────────────┘     └────────────┘     └────────────┘     └────────────┘
+  * Column types
+  * Row & column count
+
+---
+
+# 🧹 2. Data Preprocessing (5 Tabs)
+
+## 🔹 Tab 1: Overview
+
+* Dataset shape (rows/columns)
+* Missing data %
+* Data quality table
+* Missing values heatmap
+
+## 🔹 Tab 2: Clean Data
+
+* Remove duplicates
+* Handle missing values:
+
+  * Mean / Median / Mode
+  * KNN Imputer
+  * Drop rows
+* Outlier detection (IQR method)
+
+## 🔹 Tab 3: Transform
+
+* Create new features (log, square, etc.)
+* Rename columns
+* Drop columns
+* Change data types
+
+## 🔹 Tab 4: Scale & Encode
+
+* Feature Scaling:
+
+  * StandardScaler
+  * MinMaxScaler
+* Encoding:
+
+  * Label Encoding
+  * One-Hot Encoding
+
+## 🔹 Tab 5: Feature Engineering
+
+* Feature interactions
+* Feature binning
+* Download processed dataset
+
+---
+
+# 📊 3. Exploratory Data Analysis (EDA)
+
+## 🔹 Tab 1: Data Overview
+
+* Key metrics cards
+* Dataset preview
+* Column info table
+* Sample values
+
+## 🔹 Tab 2: Univariate Analysis
+
+* Numeric:
+
+  * Histogram
+  * Box plot
+  * Statistics
+* Categorical:
+
+  * Bar chart
+  * Pie chart
+  * Value counts
+
+## 🔹 Tab 3: Bivariate Analysis
+
+* Numeric vs Numeric → Scatter + Correlation
+* Numeric vs Categorical → Box/Violin plots
+* Categorical vs Categorical → Heatmaps
+
+## 🔹 Tab 4: Multivariate Analysis
+
+* Correlation matrix
+* Pair plot
+* 3D scatter plot
+
+## 🔹 Tab 5: Summary Report
+
+* Automated insights
+* Key findings
+* Dataset summary
+* Download EDA report
+
+---
+
+# 📈 4. Visualization (6 Types)
+
+### 📊 Distribution
+
+* Histogram
+* Box Plot
+* Violin Plot
+
+### 📊 Categorical
+
+* Bar Chart
+* Pie Chart
+* Sunburst
+
+### 📊 Relationship
+
+* Scatter Plot
+* Line Plot
+* Heatmap
+
+### 📊 Time Series
+
+* Line charts
+* Resampling
+
+### 📊 Statistical
+
+* QQ Plot
+* Density Heatmap
+
+### 📊 Advanced
+
+* 3D Scatter
+* Parallel Coordinates
+
+---
+
+# 🤖 5. Machine Learning (5 Tabs)
+
+## 🔹 Tab 1: Configuration
+
+* Select target column
+* Auto-detect problem type:
+
+  * Classification / Regression
+* Feature selection
+* Test size & cross-validation
+* Model selection
+* Hyperparameter tuning
+
+## 🔹 Tab 2: Model Training
+
+* Train model
+* View metrics:
+
+  * Classification: Accuracy, Precision, Recall, F1
+  * Regression: R², RMSE, MAE
+* Cross-validation scores
+
+## 🔹 Tab 3: Model Evaluation
+
+* Confusion matrix
+* ROC curve
+* Classification report
+* Residual plots
+* Feature importance
+
+## 🔹 Tab 4: Live Predictions
+
+### 🔸 Single Prediction
+
+* Input fields:
+
+  * Sliders (numeric)
+  * Dropdowns (categorical)
+* Instant prediction output
+* Probability charts
+
+### 🔸 Batch Prediction
+
+* Upload CSV
+* Predict multiple rows
+* Download results
+
+## 🔹 Tab 5: Model Management
+
+* Save model
+* Download model
+* Upload & reuse trained models
+
+---
+
+# 💡 6. Business Insights
+
+## 🔹 Overview
+
+* Key metrics
+* Data quality score
+* Column distribution
+
+## 🔹 Trends & Patterns
+
+* Correlations
+* Strong relationships
+* Skewness warnings
+
+## 🔹 Key Drivers
+
+* High variance features
+* Feature importance
+
+## 🔹 Anomalies
+
+* Outlier detection
+* Alerts for abnormal data
+
+## 🔹 Recommendations
+
+* Actionable insights
+* Strategy suggestions
+* Download insights report
+
+---
+
+# 💬 7. Chatbot Interface
+
+* Ask questions like:
+
+  * "How many rows?"
+  * "Show missing values"
+  * "Display correlation matrix"
+* Instant AI-powered answers
+* Quick action buttons:
+
+  * Shape
+  * Missing values
+  * Stats
+  * Correlation
+
+---
+
+# 📊 8. Data Quality Report
+
+* Overall quality score
+* Metrics:
+
+  * Completeness
+  * Uniqueness
+  * Memory usage
+* Column-level insights:
+
+  * Missing values
+  * Outliers
+* Recommendations
+
+---
+
+# 📐 9. Statistical Analysis
+
+## 🔹 Descriptive Stats
+
+* Summary statistics
+* Quantiles
+* Confidence intervals
+
+## 🔹 Correlation Tests
+
+* Pearson / Spearman
+* Covariance matrix
+
+## 🔹 Hypothesis Testing
+
+* t-tests
+* ANOVA
+* Chi-square
+* Non-parametric tests
+
+## 🔹 Distribution Tests
+
+* Normality tests
+* Skewness & kurtosis
+
+## 🔹 Regression Analysis
+
+* Linear regression
+* Model metrics
+* Residual analysis
+
+---
+
+# 🔄 Data Flow
+
+```
+RAW DATA
+   ↓
+CLEANED DATA
+   ↓
+SCALED / ENCODED
+   ↓
+MODEL TRAINED
+   ↓
+INSIGHTS & PREDICTIONS
+```
+
+---
+
+# 🌟 Key Features
+
+* End-to-end data pipeline
+* No-code / low-code interface
+* Interactive visualizations
+* Automated insights
+* Built-in machine learning
+* AI chatbot assistant
+
+---
+
+# 🛠️ Tech Stack (Example)
+
+* Python
+* Streamlit
+* Pandas / NumPy
+* Scikit-learn
+* Matplotlib / Seaborn / Plotly
+
+---
+
+# 📥 Output Options
+
+* Download processed data
+* Export EDA reports
+* Save trained models
+* Download predictions
+
+---
+
+# 📌 Use Cases
+
+* Business analytics
+* Data science projects
+* Academic research
+* Dashboarding & reporting
+* ML prototyping
+
+---
+
+## ⭐ If you like this project, give it a star on GitHub!
